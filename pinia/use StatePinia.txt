@@ -1,0 +1,41 @@
+1. definision pinia 
+import {defineStore} from 'pinia'
+
+
+2. create pinia
+export const countPinia=defineStore('counter',{
+    state:()=>{
+        count:0
+    },
+    getters:{
+
+    },
+    actions:{
+        plusCount(){
+            this.count++
+        }
+    }
+})
+
+
+3. export pinia counter
+
+file app.vue 
+<script setup>
+
+// mengimport file counter.js
+import {counter} from './store/counter'
+
+// mendefinisikan isi file counter.js
+const counter=counter()
+</script>
+
+<template>
+<div class='container'>
+// memanggil state yang ada di file counter.js 
+ <h3>{{counter.count}}</h3>
+
+// memanggil actions yang ada di file counter.js
+ <button @click='counter.plusCount'>plus</button>
+</div>
+</template>
